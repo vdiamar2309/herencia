@@ -15,6 +15,6 @@ public abstract class Invitado {
     public abstract void charlitaColoquial();
     public abstract void piniata();
     public abstract void aperturaRegalos();
-
+    public abstract void reaccionar(Evento evento);
 
 }

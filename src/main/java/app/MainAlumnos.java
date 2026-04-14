@@ -3,7 +3,7 @@ package app;
 import app.domain.*;
 import app.exceptions.*;
 import java.util.Random;
-
+import app.domain.Invitado;
 public class MainAlumnos {
     private static final int ROPA_MAX = 4;
 
@@ -11,7 +11,7 @@ public class MainAlumnos {
         System.out.println("--- ¡COMIENZA EL CUMPLE DE LOLO! ---");
 
         // TODO 1: Crea un Array de Invitados de tamaño 10.
-
+        Colega s = new Colega("Bermudo");
 
         // TODO 2: Rellena las primeras posiciones:
         // - 3 Familiares (con nombres y stats aleatorios)

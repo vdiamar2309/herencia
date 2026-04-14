@@ -6,10 +6,9 @@ public class pruebas {
     static void main(String[] args) {
         Colega c = new Colega("Hola");
 
+        System.out.println(c.getAburrimiento());
+        System.out.println(c.getHambre());
 
-
-        c.setAburrimiento(101);
-        c.setHambre(101);
 
         c.regularEstadisticas();
         System.out.println(c.getAburrimiento());

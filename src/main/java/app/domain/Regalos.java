@@ -1,5 +1,5 @@
 package app.domain;
 
 public enum Regalos {
-dinero, ropa, legos
+    dinero, ropa, legos
 }

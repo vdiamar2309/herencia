@@ -4,7 +4,7 @@ public class Colega extends Invitado implements Regalador {
 
     public Colega(String nombre) {
         super(nombre);
-        setHambre((int) (Math.random() * 100));
+        setHambre((int) (Math.random() * 70)+50);
     }
 
 

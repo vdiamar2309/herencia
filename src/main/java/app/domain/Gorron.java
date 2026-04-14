@@ -61,4 +61,5 @@ public class Gorron extends Invitado {
     public void robarSandwitchMortadelaConAceitunas(){
         comer(5);
     }
+
 }

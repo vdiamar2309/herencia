@@ -20,11 +20,11 @@ public class MainAlumnos {
 
         // TODO 2: Rellena las primeras posiciones:
         // - 3 Familiares (con nombres y stats aleatorios)
-        Familiar layaya = new Familiar("la yaya");
+        Familiar layaya = new Familiar("La Yaya");
         Familiar ertio = new Familiar("Er tio");
-        Familiar lamama = new Familiar("lamama");
+        Familiar lamama = new Familiar("LA MAMA");
         // - 3 Colegas (con nombres y stats aleatorios)
-        Colega toscano = new Colega("Toscano");
+        Colega sebastian = new Colega("Sebastián");
         Colega isaac = new Colega("Isaac");
         Colega tirado = new Colega("Manuel Tirado");
         // - 1 Gorrón
@@ -35,7 +35,7 @@ public class MainAlumnos {
         // Mejor uso un arraylist
         invitados.add(bermudo);
         invitados.add(tirado);
-        invitados.add(toscano);
+        invitados.add(sebastian);
         invitados.add(isaac);
         invitados.add(lamama);
         invitados.add(ertio);
@@ -48,6 +48,9 @@ public class MainAlumnos {
 
         // Bucle de la fiesta (máximo 10 rondas)
         while (fiestaSigue && ronda <= 10) {
+
+            String h = "";
+
             System.out.println("\n--- RONDA " + ronda + " ---");
             Evento eventoActual = obtenerEventoAleatorio();
             System.out.println("Evento: " + eventoActual);
@@ -65,8 +68,24 @@ public class MainAlumnos {
             // 3. Haz que reaccione al evento (gestiona las excepciones).
             // 4. Si es APERTURA_REGALOS y el invitado es regalador:
             //    - Pide el regalo (imprímelo por pantalla).
+            for (Invitado i: invitados){
+                i.reaccionar(eventoActual);
+                if (i.getAburrimiento()==100 ){
+                    if (!(i instanceof Gorron)){
+                        System.out.println(i.getNombre() + " Se ha ido por aburrimiento");
+                        invitados.remove(i);
+                    }
+                }
+                if (i.getHambre()==100){
+                    System.out.println(i.getNombre() + "Se ha ido hambriento de la fiesta");
+                    invitados.remove(i);
+                }
 
+            }
 
+            if (eventoActual.toString().equals("APERTURA_REGALOS")){
+
+            }
             // TODO 4: Chequeo de fin de fiesta
             // - Si se han regalado 4 prendas de ropa -> Mensaje de decepción.
             // - Si no queda nadie en la fiesta -> Fin con mensaje.

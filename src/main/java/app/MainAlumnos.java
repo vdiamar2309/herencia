@@ -3,11 +3,13 @@ package app;
 import app.domain.*;
 import app.exceptions.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import app.domain.Invitado;
+import com.sun.nio.sctp.SendFailedNotification;
 
 public class MainAlumnos {
     private static final int ROPA_MAX = 4;
@@ -68,23 +70,28 @@ public class MainAlumnos {
             // 3. Haz que reaccione al evento (gestiona las excepciones).
             // 4. Si es APERTURA_REGALOS y el invitado es regalador:
             //    - Pide el regalo (imprímelo por pantalla).
-            for (Invitado i: invitados){
+            for (Invitado i : invitados) {
                 i.reaccionar(eventoActual);
-                if (i.getAburrimiento()==100 ){
-                    if (!(i instanceof Gorron)){
+                if (i.getAburrimiento() == 100) {
+                    if (!(i instanceof Gorron)) {
                         System.out.println(i.getNombre() + " Se ha ido por aburrimiento");
                         invitados.remove(i);
                     }
                 }
-                if (i.getHambre()==100){
+                if (i.getHambre() == 100) {
                     System.out.println(i.getNombre() + "Se ha ido hambriento de la fiesta");
                     invitados.remove(i);
                 }
 
             }
 
-            if (eventoActual.toString().equals("APERTURA_REGALOS")){
+            if (eventoActual.toString().equals("APERTURA_REGALOS")) {
+                for (Invitado i : invitados) {
+                    i.reaccionar(Evento.APERTURA_REGALOS);
+                    if (i instanceof Familiar || i instanceof Colega) {
 
+                    }
+                }
             }
             // TODO 4: Chequeo de fin de fiesta
             // - Si se han regalado 4 prendas de ropa -> Mensaje de decepción.

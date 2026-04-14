@@ -58,6 +58,19 @@ public class Colega extends Invitado implements Regalador {
 
     @Override
     public String darRegalo() {
-        return "h";
+        String regalo;
+        int i = (int) (Math.random()*3)+1;
+        switch (i) {
+            case 1:
+                regalo = Regalos.legos.toString();
+                break;
+            case 2:
+                regalo = Regalos.dinero.toString();
+                break;
+            case 3:
+                regalo = Regalos.ropa.toString();
+                break;
+        }
+        return "a";
     }
 }

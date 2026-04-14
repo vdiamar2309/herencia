@@ -4,6 +4,8 @@ public class Familiar extends Invitado implements Regalador {
 
     public Familiar(String nombre) {
         super(nombre);
+        setHambre((int) (Math.random() * 100));
+        setAburrimiento((int) (Math.random() * 100));
     }
 
     @Override
@@ -37,9 +39,10 @@ public class Familiar extends Invitado implements Regalador {
     }
 
     @Override
-    public void reaccionar(Evento evento) {
+    public void baile() {
 
     }
+
 
     @Override
     public void darRegalo() {

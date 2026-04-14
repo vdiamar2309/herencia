@@ -35,4 +35,10 @@ public class Gorron extends Invitado{
     public void aperturaRegalos() {
 
     }
+
+    @Override
+    public void baile() {
+
+    }
+
 }

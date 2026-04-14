@@ -11,7 +11,7 @@ public class MainAlumnos {
         System.out.println("--- ¡COMIENZA EL CUMPLE DE LOLO! ---");
 
         // TODO 1: Crea un Array de Invitados de tamaño 10.
-        Colega s = new Colega("Bermudo");
+
 
         // TODO 2: Rellena las primeras posiciones:
         // - 3 Familiares (con nombres y stats aleatorios)

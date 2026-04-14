@@ -13,8 +13,20 @@ public abstract class Invitado {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void regularEstadisticas(){
+        if (hambre>100){
+        this.hambre=100;
+        }
+        if (hambre<0){
+        this.hambre=0;
+        }
+
+        if (aburrimiento>100){
+        this.aburrimiento=100;
+        }
+        if (aburrimiento<0){
+        this.aburrimiento=0;
+        }
     }
 
     public int getHambre() {
@@ -48,6 +60,7 @@ public abstract class Invitado {
             case charlita_coloquial -> charlitaColoquial();
             case musica_alta -> musicaAlta();
             case musica_baja -> musicaBaja();
+            case APERTURA_REGALOS -> aperturaRegalos();
         }
     }
 

@@ -2,6 +2,9 @@ package app;
 
 import app.domain.*;
 import app.exceptions.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import app.domain.Invitado;
 public class MainAlumnos {
@@ -11,13 +14,30 @@ public class MainAlumnos {
         System.out.println("--- ¡COMIENZA EL CUMPLE DE LOLO! ---");
 
         // TODO 1: Crea un Array de Invitados de tamaño 10.
-
+        ArrayList <Invitado> invitados = new ArrayList<>();
 
         // TODO 2: Rellena las primeras posiciones:
         // - 3 Familiares (con nombres y stats aleatorios)
+        Familiar layaya = new Familiar("la yaya");
+        Familiar ertio = new Familiar("Er tio");
+        Familiar lamama = new Familiar("lamama");
         // - 3 Colegas (con nombres y stats aleatorios)
+        Colega toscano = new Colega("Toscano");
+        Colega isaac = new Colega("Isaac");
+        Colega tirado = new Colega("Manuel Tirado");
         // - 1 Gorrón
+        // Lo he hecho por la broma de que alguien te puso de gorrón
+        Gorron bermudo = new Gorron("Bermudo");
         // PISTA: Usa un contador para saber en qué posición del array insertas.
+
+        // Mejor uso un arraylist
+        invitados.add(bermudo);
+        invitados.add(tirado);
+        invitados.add(toscano);
+        invitados.add(isaac);
+        invitados.add(lamama);
+        invitados.add(ertio);
+        invitados.add(layaya);
 
 
         int ronda = 1;

@@ -23,6 +23,7 @@ public class Gorron extends Invitado {
     public void musicaBaja() {
         aburrirse(30);
         pasarHambreTurno();
+        robarSandwitchMortadelaConAceitunas();
         regularEstadisticas();
     }
 
@@ -30,6 +31,7 @@ public class Gorron extends Invitado {
     public void charlitaColoquial() {
         aburrirse(40);
         pasarHambreTurno();
+        robarSandwitchMortadelaConAceitunas();
         regularEstadisticas();
     }
 
@@ -43,6 +45,7 @@ public class Gorron extends Invitado {
     public void aperturaRegalos() {
         divertirse(10);
         pasarHambreTurno();
+        robarSandwitchMortadelaConAceitunas();;
         regularEstadisticas();
     }
 
@@ -53,4 +56,9 @@ public class Gorron extends Invitado {
         regularEstadisticas();
     }
 
+
+    // El nombre original era robarComida() pero lo he dejado así porque me pareció gracioso
+    public void robarSandwitchMortadelaConAceitunas(){
+        comer(5);
+    }
 }

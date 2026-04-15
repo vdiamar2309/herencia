@@ -88,8 +88,8 @@ public class MainAlumnos {
             if (eventoActual.toString().equals("APERTURA_REGALOS")) {
                 for (Invitado i : invitados) {
                     i.reaccionar(Evento.APERTURA_REGALOS);
-                    if (i instanceof Familiar || i instanceof Colega) {
-
+                    if (i instanceof Regalador regalador) {
+                        regalador.darRegalo();
                     }
                 }
             }

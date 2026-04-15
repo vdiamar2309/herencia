@@ -27,7 +27,7 @@ public class MainAlumnos {
         Familiar lamama = new Familiar("LA MAMA");
         // - 3 Colegas (con nombres y stats aleatorios)
         Colega sebastian = new Colega("Sebastián");
-        Colega isaac = new Colega("Isaac");
+        Colega mariangeles = new Colega("Mari Angeles");
         Colega tirado = new Colega("Manuel Tirado");
         // - 1 Gorrón
         // Lo he hecho por la broma de que alguien te puso de gorrón
@@ -38,7 +38,7 @@ public class MainAlumnos {
         invitados.add(bermudo);
         invitados.add(tirado);
         invitados.add(sebastian);
-        invitados.add(isaac);
+        invitados.add(mariangeles);
         invitados.add(lamama);
         invitados.add(ertio);
         invitados.add(layaya);

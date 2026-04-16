@@ -1,9 +1,7 @@
 package app;
 
 import app.domain.*;
-import app.exceptions.*;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 import app.domain.Invitado;
@@ -11,34 +9,11 @@ import app.domain.Invitado;
 public class MainAlumnos {
     private static final int ROPA_MAX = 4;
     private static int contadorRopa =0;
-    public static void main(String[] args) {
+    static void main() {
         System.out.println("--- ¡COMIENZA EL CUMPLE DE LOLO! ---");
 
         // TODO 1: Crea un Array de Invitados de tamaño 10.
-        ArrayList<Invitado> invitados = new ArrayList<>();
-
-        // TODO 2: Rellena las primeras posiciones:
-        // - 3 Familiares (con nombres y stats aleatorios)
-        Familiar layaya = new Familiar("La Yaya");
-        Familiar ertio = new Familiar("Er tio");
-        Familiar lamama = new Familiar("LA MAMA");
-        // - 3 Colegas (con nombres y stats aleatorios)
-        Colega sebastian = new Colega("Sebastián");
-        Colega mariangeles = new Colega("Mari Angeles");
-        Colega tirado = new Colega("Manuel Tirado");
-        // - 1 Gorrón
-        // Lo he hecho por la broma de que alguien te puso de gorrón
-        Gorron bermudo = new Gorron("Bermudo");
-        // PISTA: Usa un contador para saber en qué posición del array insertas.
-
-        // Mejor uso un arraylist
-        invitados.add(bermudo);
-        invitados.add(tirado);
-        invitados.add(sebastian);
-        invitados.add(mariangeles);
-        invitados.add(lamama);
-        invitados.add(ertio);
-        invitados.add(layaya);
+        ArrayList<Invitado> invitados = getInvitados();
 
 
         int ronda = 1;
@@ -47,8 +22,6 @@ public class MainAlumnos {
 
         // Bucle de la fiesta (máximo 10 rondas)
         while (fiestaSigue && ronda <= 10) {
-
-            String h = "";
 
             System.out.println("\n--- RONDA " + ronda + " ---");
             Evento eventoActual = obtenerEventoAleatorio();
@@ -116,6 +89,34 @@ public class MainAlumnos {
             ronda++;
         }
         System.out.println("--- FIN DE LA FIESTA ---");
+    }
+
+    private static ArrayList<Invitado> getInvitados() {
+        ArrayList<Invitado> invitados = new ArrayList<>();
+
+        // TODO 2: Rellena las primeras posiciones:
+        // - 3 Familiares (con nombres y stats aleatorios)
+        Familiar layaya = new Familiar("La Yaya");
+        Familiar ertio = new Familiar("Er tio");
+        Familiar lamama = new Familiar("LA MAMA");
+        // - 3 Colegas (con nombres y stats aleatorios)
+        Colega sebastian = new Colega("Sebastián");
+        Colega mariangeles = new Colega("Mari Angeles");
+        Colega tirado = new Colega("Manuel Tirado");
+        // - 1 Gorrón
+        // Lo he hecho por la broma de que alguien te puso de gorrón
+        Gorron bermudo = new Gorron("Bermudo");
+        // PISTA: Usa un contador para saber en qué posición del array insertas.
+
+        // Mejor uso un arraylist
+        invitados.add(bermudo);
+        invitados.add(tirado);
+        invitados.add(sebastian);
+        invitados.add(mariangeles);
+        invitados.add(lamama);
+        invitados.add(ertio);
+        invitados.add(layaya);
+        return invitados;
     }
 
     private static Evento obtenerEventoAleatorio() {

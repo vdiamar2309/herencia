@@ -61,15 +61,9 @@ public class Colega extends Invitado implements Regalador {
         String regalo;
         int i = (int) (Math.random()*3)+1;
         switch (i) {
-            case 1:
-                regalo = Regalos.legos.toString();
-                break;
-            case 2:
-                regalo = Regalos.dinero.toString();
-                break;
-            case 3:
-                regalo = Regalos.ropa.toString();
-                break;
+            case 1 -> regalo = Regalos.legos.toString();
+            case 2 -> regalo = Regalos.dinero.toString();
+            case 3 -> regalo = Regalos.ropa.toString();
         }
         return "a";
     }

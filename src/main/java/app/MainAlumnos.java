@@ -5,15 +5,12 @@ import app.exceptions.*;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 import app.domain.Invitado;
-import com.sun.nio.sctp.SendFailedNotification;
 
 public class MainAlumnos {
     private static final int ROPA_MAX = 4;
-
+    private static int contadorRopa =0;
     public static void main(String[] args) {
         System.out.println("--- ¡COMIENZA EL CUMPLE DE LOLO! ---");
 
@@ -62,7 +59,6 @@ public class MainAlumnos {
                 eventoActual = obtenerEventoAleatorio();
             }
 
-            System.out.println("Evento: " + eventoActual);
 
             // TODO 3: Recorre el array de invitados
             // 1. Cuidado con las posiciones null del array.
@@ -74,22 +70,28 @@ public class MainAlumnos {
                 i.reaccionar(eventoActual);
                 if (i.getAburrimiento() == 100) {
                     if (!(i instanceof Gorron)) {
-                        System.out.println(i.getNombre() + " Se ha ido por aburrimiento");
+                        System.out.println(i.getNombre() + "  se ha ido por aburrimiento");
                         invitados.remove(i);
                     }
                 }
                 if (i.getHambre() == 100) {
-                    System.out.println(i.getNombre() + "Se ha ido hambriento de la fiesta");
+                    System.out.println(i.getNombre() + "  se ha ido hambriento de la fiesta");
                     invitados.remove(i);
                 }
 
             }
 
             if (eventoActual.toString().equals("APERTURA_REGALOS")) {
+
+                String regalo;
                 for (Invitado i : invitados) {
                     i.reaccionar(Evento.APERTURA_REGALOS);
                     if (i instanceof Regalador regalador) {
-                        regalador.darRegalo();
+                        regalo = regalador.darRegalo();
+                        System.out.println(i.getNombre()+" ha regalado "+ regalo);
+                        if (regalo.equals("ropa")) {
+                            contadorRopa++;
+                        }
                     }
                 }
             }
@@ -97,6 +99,20 @@ public class MainAlumnos {
             // - Si se han regalado 4 prendas de ropa -> Mensaje de decepción.
             // - Si no queda nadie en la fiesta -> Fin con mensaje.
 
+
+
+            if (contadorRopa==ROPA_MAX){
+                System.out.println("Esta fiesta es un rollo, todo el mundo regala ropa. Cada uno pa su\n" +
+                        "casa\n");
+                fiestaSigue=false;
+            } else {
+                contadorRopa=0;
+            }
+
+            if (invitados.isEmpty()){
+                System.out.println("Se ha ido todo el mundo. Vaya mojón de fiesta, Lolo\n");
+                fiestaSigue=false;
+            }
             ronda++;
         }
         System.out.println("--- FIN DE LA FIESTA ---");
@@ -104,6 +120,16 @@ public class MainAlumnos {
 
     private static Evento obtenerEventoAleatorio() {
         // TODO 5: Obtener un evento aleatorio
-        throw new UnsupportedOperationException("Rellena el código");
+        int i = (int) (Math.random() * 7) + 1;
+        return switch (i) {
+            case 1 -> Evento.APERTURA_REGALOS;
+            case 2 -> Evento.baile;
+            case 3 -> Evento.piniata;
+            case 4 -> Evento.musica_baja;
+            case 5 -> Evento.musica_alta;
+            case 6 -> Evento.corte_carta;
+            case 7 -> Evento.charlita_coloquial;
+            default -> throw new IllegalStateException("Unexpected value: " + i);
+        };
     }
 }

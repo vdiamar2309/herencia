@@ -22,7 +22,7 @@ public class MainAlumnos {
         boolean yaSeAbrieronRegalos = false;
 
         // Bucle de la fiesta (máximo 10 rondas)
-        while (fiestaSigue && ronda <= 10){
+        while (fiestaSigue && ronda <= 10) {
 
             System.out.println("\n--- RONDA " + ronda + " ---");
             Evento eventoActual = obtenerEventoAleatorio();
@@ -30,77 +30,90 @@ public class MainAlumnos {
 
             // Evitamos que se abran regalos dos veces
 
-                eventoActual = obtenerEventoAleatorio();
+            eventoActual = obtenerEventoAleatorio();
 
 
-                // TODO 3: Recorre el array de invitados
-                // 1. Cuidado con las posiciones null del array.
-                // 2. Verifica si el invitado sigue en la fiesta.
-                // 3. Haz que reaccione al evento (gestiona las excepciones).
-                // 4. Si es APERTURA_REGALOS y el invitado es regalador:
-                //    - Pide el regalo (imprímelo por pantalla).
+            // TODO 3: Recorre el array de invitados
+            // 1. Cuidado con las posiciones null del array.
+            // 2. Verifica si el invitado sigue en la fiesta.
+            // 3. Haz que reaccione al evento (gestiona las excepciones).
+            // 4. Si es APERTURA_REGALOS y el invitado es regalador:
+            //    - Pide el regalo (imprímelo por pantalla).
+            reaccionar(invitados, eventoActual);
+
+            if (eventoActual.toString().equals("APERTURA_REGALOS")) {
+
+                String regalo;
                 for (Invitado i : invitados) {
-                    i.reaccionar(eventoActual);
-                    if (i.getAburrimiento() == 100) {
-                        if (!(i instanceof Gorron)) {
-                            System.out.println(i.getNombre() + "  se ha ido por aburrimiento");
-                            invitados.remove(i);
-                        }
-                    }
-                    if (!(i instanceof Gorron)) {
-                        if (i.getHambre() == 100) {
-                            System.out.println(i.getNombre() + "  se ha ido hambriento de la fiesta");
-                            invitados.remove(i);
-                        }
-                    }
-                    if (i instanceof Gorron) {
-                        if (i.getHambre() == 0) {
-                            invitados.remove(i);
-                            System.out.println("Después de robarle no dejar ni las migas sandwiches de mortadela de los niños... ");
-                            System.out.println(i.getNombre() + " se va de la fiesta hasta arriba de comida. ¡Adiós\n" +
-                                    "pringaos!\n");
+                    i.reaccionar(Evento.APERTURA_REGALOS);
+                    if (i instanceof Regalador regalador) {
+                        regalo = regalador.darRegalo();
+                        System.out.println(i.getNombre() + " ha regalado " + regalo);
+                        if (regalo.equals("ropa")) {
+                            contadorRopa++;
                         }
                     }
                 }
 
-                if (eventoActual.toString().equals("APERTURA_REGALOS")) {
 
-                    String regalo;
-                    for (Invitado i : invitados) {
-                        i.reaccionar(Evento.APERTURA_REGALOS);
-                        if (i instanceof Regalador regalador) {
-                            regalo = regalador.darRegalo();
-                            System.out.println(i.getNombre() + " ha regalado " + regalo);
-                            if (regalo.equals("ropa")) {
-                                contadorRopa++;
-                            }
-                        }
-                    }
+                yaSeAbrieronRegalos = true;
+            }
+            // TODO 4: Chequeo de fin de fiesta
+            // - Si se han regalado 4 prendas de ropa -> Mensaje de decepción.
+            // -  Si no queda nadie en la fiesta -> Fin con mensaje.
 
 
-                    yaSeAbrieronRegalos = true;
-                }
-                // TODO 4: Chequeo de fin de fiesta
-                // - Si se han regalado 4 prendas de ropa -> Mensaje de decepción.
-                // - Si no queda nadie en la fiesta -> Fin con mensaje.
+            if (contadorRopa == ROPA_MAX) {
+                System.out.println("Esta fiesta es un rollo, todo el mundo regala ropa. Cada uno pa su\n" +
+                        "casa\n");
+                fiestaSigue = false;
+            } else {
+                contadorRopa = 0;
+            }
 
-
-                if (contadorRopa == ROPA_MAX) {
-                    System.out.println("Esta fiesta es un rollo, todo el mundo regala ropa. Cada uno pa su\n" +
-                            "casa\n");
-                    fiestaSigue = false;
-                } else {
-                    contadorRopa = 0;
-                }
-
-                if (invitados.isEmpty()) {
-                    System.out.println("Se ha ido todo el mundo. Vaya mojón de fiesta, Lolo\n");
-                    fiestaSigue = false;
-                }
-                ronda++;
+            if (invitados.isEmpty()) {
+                System.out.println("Se ha ido todo el mundo. Vaya mojón de fiesta, Lolo\n");
+                fiestaSigue = false;
+            }
+            ronda++;
 
         }
         System.out.println("--- FIN DE LA FIESTA ---");
+    }
+
+    public static void reaccionar(ArrayList<Invitado> invitados, Evento eventoActual) {
+        boolean eliminarAnterior=false;
+        int j = 0;
+        for (int i = 0; i < invitados.size(); i++) {
+            if (eliminarAnterior){
+                invitados.remove(j);
+            }
+
+            invitados.get(i).reaccionar(eventoActual);
+            if (invitados.get(i).getAburrimiento() == 100) {
+                if (!(invitados.get(i) instanceof Gorron)) {
+                    System.out.println(invitados.get(i).getNombre() + "  se ha ido por aburrimiento");
+                    j=i;
+                    eliminarAnterior=true;
+                }
+            }
+            if (!(invitados.get(i) instanceof Gorron)) {
+                if (invitados.get(i).getHambre() == 100) {
+                    System.out.println(invitados.get(i).getNombre() + "  se ha ido hambriento de la fiesta");
+                    j=i;
+                    eliminarAnterior=true;
+                }
+            }
+            if (invitados.get(i) instanceof Gorron) {
+                if (invitados.get(i).getHambre() == 0) {
+                    System.out.println("Después de robarle no dejar ni las migas sandwiches de mortadela de los niños... ");
+                    System.out.println(invitados.get(i).getNombre() + " se va de la fiesta hasta arriba de comida. ¡Adiós\n" +
+                            "pringaos!\n");
+                    j=i;
+                    eliminarAnterior=true;
+                }
+            }
+        }
     }
 
     private static ArrayList<Invitado> getInvitados() {

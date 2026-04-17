@@ -60,12 +60,16 @@ public class Familiar extends Invitado implements Regalador {
     @Override
     public String darRegalo() {
         String regalo;
-        int i = (int) (Math.random()*3)+1;
+        int i = (int) (Math.random()*2)+1;
         switch (i) {
-            case 1 -> regalo = Regalos.legos.toString();
-            case 2 -> regalo = Regalos.dinero.toString();
-            case 3 -> regalo = Regalos.ropa.toString();
+            case 1 -> {
+                return regalo = Regalos.dinero.toString();
+            }
+            case 2 -> {
+                return regalo = Regalos.ropa.toString();
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + i);
         }
-        return "a";
+
     }
 }

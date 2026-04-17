@@ -63,44 +63,49 @@ public class MainAlumnos {
             // -  Si no queda nadie en la fiesta -> Fin con mensaje.
 
 
-            if (contadorRopa == ROPA_MAX) {
-                System.out.println("Esta fiesta es un rollo, todo el mundo regala ropa. Cada uno pa su\n" +
-                        "casa\n");
-                fiestaSigue = false;
-            } else {
-                contadorRopa = 0;
-            }
-
-            if (invitados.isEmpty()) {
-                System.out.println("Se ha ido todo el mundo. Vaya mojón de fiesta, Lolo\n");
-                fiestaSigue = false;
-            }
+            fiestaSigue = isFiestaSigue(fiestaSigue, invitados);
             ronda++;
 
         }
         System.out.println("--- FIN DE LA FIESTA ---");
     }
 
+    public static boolean isFiestaSigue(boolean fiestaSigue, ArrayList<Invitado> invitados) {
+        if (contadorRopa == ROPA_MAX) {
+            System.out.println("Esta fiesta es un rollo, todo el mundo regala ropa. Cada uno pa su\n" +
+                    "casa\n");
+            fiestaSigue = false;
+        }
+
+        if (invitados.isEmpty()) {
+            System.out.println("Se ha ido todo el mundo. Vaya mojón de fiesta, Lolo\n");
+            fiestaSigue = false;
+        }
+        return fiestaSigue;
+    }
+
     public static void reaccionar(ArrayList<Invitado> invitados, Evento eventoActual) {
         boolean eliminarAnterior=false;
-        int j = 0;
-        for (int i = 0; i < invitados.size(); i++) {
+
+        int i = 0;
+        while (i < invitados.size()) {
             if (eliminarAnterior){
-                invitados.remove(j);
+                invitados.remove(--i);
+                eliminarAnterior=false;
             }
 
             invitados.get(i).reaccionar(eventoActual);
             if (invitados.get(i).getAburrimiento() == 100) {
                 if (!(invitados.get(i) instanceof Gorron)) {
                     System.out.println(invitados.get(i).getNombre() + "  se ha ido por aburrimiento");
-                    j=i;
+
                     eliminarAnterior=true;
                 }
             }
             if (!(invitados.get(i) instanceof Gorron)) {
                 if (invitados.get(i).getHambre() == 100) {
                     System.out.println(invitados.get(i).getNombre() + "  se ha ido hambriento de la fiesta");
-                    j=i;
+
                     eliminarAnterior=true;
                 }
             }
@@ -109,10 +114,10 @@ public class MainAlumnos {
                     System.out.println("Después de robarle no dejar ni las migas sandwiches de mortadela de los niños... ");
                     System.out.println(invitados.get(i).getNombre() + " se va de la fiesta hasta arriba de comida. ¡Adiós\n" +
                             "pringaos!\n");
-                    j=i;
                     eliminarAnterior=true;
                 }
             }
+            i++;
         }
     }
 

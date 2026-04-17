@@ -30,7 +30,6 @@ public class MainAlumnos {
 
             // Evitamos que se abran regalos dos veces
 
-            eventoActual = obtenerEventoAleatorio();
 
 
             // TODO 3: Recorre el array de invitados
@@ -41,8 +40,7 @@ public class MainAlumnos {
             //    - Pide el regalo (imprímelo por pantalla).
             reaccionar(invitados, eventoActual);
 
-            if (eventoActual.toString().equals("APERTURA_REGALOS")) {
-
+            if (eventoActual==Evento.APERTURA_REGALOS) {
                 String regalo;
                 for (Invitado i : invitados) {
                     i.reaccionar(Evento.APERTURA_REGALOS);
@@ -53,10 +51,11 @@ public class MainAlumnos {
                             contadorRopa++;
                         }
                     }
+                    yaSeAbrieronRegalos=true;
                 }
 
 
-                yaSeAbrieronRegalos = true;
+
             }
             // TODO 4: Chequeo de fin de fiesta
             // - Si se han regalado 4 prendas de ropa -> Mensaje de decepción.

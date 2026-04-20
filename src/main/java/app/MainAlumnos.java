@@ -31,7 +31,6 @@ public class MainAlumnos {
             // Evitamos que se abran regalos dos veces
 
 
-
             // TODO 3: Recorre el array de invitados
             // 1. Cuidado con las posiciones null del array.
             // 2. Verifica si el invitado sigue en la fiesta.
@@ -40,7 +39,7 @@ public class MainAlumnos {
             //    - Pide el regalo (imprímelo por pantalla).
             reaccionar(invitados, eventoActual);
 
-            if (eventoActual==Evento.APERTURA_REGALOS) {
+            if (eventoActual == Evento.APERTURA_REGALOS) {
                 String regalo;
                 for (Invitado i : invitados) {
                     i.reaccionar(Evento.APERTURA_REGALOS);
@@ -51,9 +50,8 @@ public class MainAlumnos {
                             contadorRopa++;
                         }
                     }
-                    yaSeAbrieronRegalos=true;
+                    yaSeAbrieronRegalos = true;
                 }
-
 
 
             }
@@ -84,13 +82,13 @@ public class MainAlumnos {
     }
 
     public static void reaccionar(ArrayList<Invitado> invitados, Evento eventoActual) {
-        boolean eliminarAnterior=false;
+        boolean eliminarAnterior = false;
 
         int i = 0;
         while (i < invitados.size()) {
-            if (eliminarAnterior){
+            if (eliminarAnterior) {
                 invitados.remove(--i);
-                eliminarAnterior=false;
+                eliminarAnterior = false;
             }
 
             invitados.get(i).reaccionar(eventoActual);
@@ -98,14 +96,14 @@ public class MainAlumnos {
                 if (!(invitados.get(i) instanceof Gorron)) {
                     System.out.println(invitados.get(i).getNombre() + "  se ha ido por aburrimiento");
 
-                    eliminarAnterior=true;
+                    eliminarAnterior = true;
                 }
             }
             if (!(invitados.get(i) instanceof Gorron)) {
                 if (invitados.get(i).getHambre() == 100) {
                     System.out.println(invitados.get(i).getNombre() + "  se ha ido hambriento de la fiesta");
 
-                    eliminarAnterior=true;
+                    eliminarAnterior = true;
                 }
             }
             if (invitados.get(i) instanceof Gorron) {
@@ -113,7 +111,7 @@ public class MainAlumnos {
                     System.out.println("Después de robarle no dejar ni las migas sandwiches de mortadela de los niños... ");
                     System.out.println(invitados.get(i).getNombre() + " se va de la fiesta hasta arriba de comida. ¡Adiós\n" +
                             "pringaos!\n");
-                    eliminarAnterior=true;
+                    eliminarAnterior = true;
                 }
             }
             i++;

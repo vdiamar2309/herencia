@@ -45,7 +45,8 @@ public class Gorron extends Invitado {
     public void aperturaRegalos() {
         divertirse(10);
         pasarHambreTurno();
-        robarSandwitchMortadelaConAceitunas();;
+        robarSandwitchMortadelaConAceitunas();
+        ;
         regularEstadisticas();
     }
 
@@ -58,7 +59,7 @@ public class Gorron extends Invitado {
 
 
     // El nombre original era robarComida() pero lo he dejado así porque me pareció gracioso
-    public void robarSandwitchMortadelaConAceitunas(){
+    public void robarSandwitchMortadelaConAceitunas() {
         comer(5);
     }
 

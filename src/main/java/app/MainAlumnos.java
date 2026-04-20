@@ -68,7 +68,7 @@ public class MainAlumnos {
     }
 
     public static boolean isFiestaSigue(boolean fiestaSigue, ArrayList<Invitado> invitados) {
-        if (contadorRopa == ROPA_MAX) {
+        if (contadorRopa >= ROPA_MAX) {
             System.out.println("Esta fiesta es un rollo, todo el mundo regala ropa. Cada uno pa su\n" +
                     "casa\n");
             fiestaSigue = false;

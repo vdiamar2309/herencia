@@ -46,7 +46,6 @@ public class Gorron extends Invitado {
         divertirse(10);
         pasarHambreTurno();
         robarSandwitchMortadelaConAceitunas();
-        ;
         regularEstadisticas();
     }
 

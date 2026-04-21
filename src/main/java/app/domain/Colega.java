@@ -59,7 +59,7 @@ public class Colega extends Invitado implements Regalador {
     @Override
     public String darRegalo() {
         String regalo;
-        int i = (int) (Math.random() * 2) + 1;
+        int i = (int) (Math.random() * 1) + 2;
         switch (i) {
             case 1 -> {
                 return regalo = Regalos.legos.toString();

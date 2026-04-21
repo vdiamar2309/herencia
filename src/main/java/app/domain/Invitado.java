@@ -79,12 +79,12 @@ public abstract class Invitado {
 
     public void reaccionar(Evento evento) {
         switch (evento) {
-            case baile -> baile();
-            case piniata -> piniata();
-            case corte_carta -> corteTarta();
-            case charlita_coloquial -> charlitaColoquial();
-            case musica_alta -> musicaAlta();
-            case musica_baja -> musicaBaja();
+            case BAILE -> baile();
+            case PINIATA -> piniata();
+            case CORTE_CARTA -> corteTarta();
+            case CHARLITA_COLOQUIAL -> charlitaColoquial();
+            case MUSICA_ALTA -> musicaAlta();
+            case MUSICA_BAJA -> musicaBaja();
             case APERTURA_REGALOS -> aperturaRegalos();
         }
     }

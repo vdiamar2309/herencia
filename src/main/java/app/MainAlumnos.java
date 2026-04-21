@@ -25,7 +25,7 @@ public class MainAlumnos {
         while (fiestaSigue && ronda <= 10) {
 
             System.out.println("\n--- RONDA " + ronda + " ---");
-            Evento eventoActual = obtenerEventoAleatorio();
+            Evento eventoActual = obtenerEventoAleatorio(yaSeAbrieronRegalos);
             System.out.println("Evento: " + eventoActual);
 
             // Evitamos que se abran regalos dos veces
@@ -146,17 +146,23 @@ public class MainAlumnos {
         return invitados;
     }
 
-    private static Evento obtenerEventoAleatorio() {
+    private static Evento obtenerEventoAleatorio(boolean regalosAbierto) {
         // TODO 5: Obtener un evento aleatorio
-        int i = (int) (Math.random() * 7) + 1;
+        int j = 7;
+        if (regalosAbierto) {
+            j = 6;
+        }
+
+        int i = (int) (Math.random() * j) + 1;
+
         return switch (i) {
-            case 1 -> Evento.APERTURA_REGALOS;
-            case 2 -> Evento.baile;
-            case 3 -> Evento.piniata;
-            case 4 -> Evento.musica_baja;
-            case 5 -> Evento.musica_alta;
-            case 6 -> Evento.corte_carta;
-            case 7 -> Evento.charlita_coloquial;
+            case 1 -> Evento.CHARLITA_COLOQUIAL;
+            case 2 -> Evento.BAILE;
+            case 3 -> Evento.PINIATA;
+            case 4 -> Evento.MUSICA_BAJA;
+            case 5 -> Evento.MUSICA_ALTA;
+            case 6 -> Evento.CORTE_CARTA;
+            case 7 -> Evento.APERTURA_REGALOS;
             default -> throw new IllegalStateException("Unexpected value: " + i);
         };
     }

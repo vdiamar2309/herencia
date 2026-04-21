@@ -1,5 +1,5 @@
 package app.domain;
 
 public enum Evento {
-    corte_carta, musica_alta, musica_baja, charlita_coloquial, baile, piniata, APERTURA_REGALOS
+    CORTE_CARTA, MUSICA_ALTA, MUSICA_BAJA, CHARLITA_COLOQUIAL, BAILE, PINIATA, APERTURA_REGALOS
 }

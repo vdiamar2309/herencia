@@ -153,7 +153,7 @@ public class MainAlumnos {
             j = 6;
         }
 
-        int i = (int) (Math.random() * j) + 1;
+        int i = (int) (Math.random() * 1) + j;
 
         return switch (i) {
             case 1 -> Evento.CHARLITA_COLOQUIAL;

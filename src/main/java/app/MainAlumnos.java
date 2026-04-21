@@ -91,7 +91,6 @@ public class MainAlumnos {
                 eliminarAnterior = false;
             }
 
-            invitados.get(i).reaccionar(eventoActual);
             if (invitados.get(i).getAburrimiento() == 100) {
                 if (!(invitados.get(i) instanceof Gorron)) {
                     System.out.println(invitados.get(i).getNombre() + "  se ha ido por aburrimiento");
@@ -113,6 +112,7 @@ public class MainAlumnos {
                             "pringaos!\n");
                     eliminarAnterior = true;
                 }
+                invitados.get(i).reaccionar(eventoActual);
             }
             i++;
         }
